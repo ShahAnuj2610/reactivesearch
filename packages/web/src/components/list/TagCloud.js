@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React, { Component } from 'react';
 
 import {
@@ -308,13 +310,13 @@ class TagCloud extends Component {
 		});
 
 		return (
-			<Container style={this.props.style} className={this.props.className}>
+			<Container style={this.props.style} css={this.props.className}>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
-				<TagList role="menu" className={getClassName(this.props.innerClass, 'list') || null}>
+				<TagList role="menu" css={getClassName(this.props.innerClass, 'list') || null}>
 					{this.state.options.map((item) => {
 						// eslint-disable-next-line
 						const size = (item.doc_count / highestCount) * (max - min) + min;
@@ -327,7 +329,7 @@ class TagCloud extends Component {
 									handleA11yAction(e, () => this.handleClick(item.key))
 								}
 								style={{ fontSize: `${size}em` }}
-								className={
+								css={
 									this.state.currentValue[item.key]
 										? `${getClassName(this.props.innerClass, 'input')
 												|| ''} active`

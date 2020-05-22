@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React, { Component } from 'react';
 
 import {
@@ -377,7 +379,7 @@ class MultiDataList extends Component {
 		if (this.props.showSearch) {
 			return (
 				<Input
-					className={getClassName(this.props.innerClass, 'input') || null}
+					css={getClassName(this.props.innerClass, 'input') || null}
 					onChange={this.handleInputChange}
 					value={this.state.searchTerm}
 					placeholder={this.props.placeholder}
@@ -445,9 +447,9 @@ class MultiDataList extends Component {
 		const isAllChecked = selectAllLabel ? !!this.state.currentValue[selectAllLabel] : false;
 
 		return (
-			<Container style={this.props.style} className={this.props.className}>
+			<Container style={this.props.style} css={this.props.className}>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
@@ -456,20 +458,20 @@ class MultiDataList extends Component {
 					this.getComponent()
 				) : (
 					<UL
-						className={getClassName(this.props.innerClass, 'list') || null}
+						css={getClassName(this.props.innerClass, 'list') || null}
 						role="listbox"
 						aria-label={`${this.props.componentId}-items`}
 					>
 						{selectAllLabel ? (
 							<li
 								key={selectAllLabel}
-								className={`${isAllChecked ? 'active' : ''}`}
+								css={`${isAllChecked ? 'active' : ''}`}
 								role="option"
 								aria-checked={isAllChecked}
 								aria-selected={isAllChecked}
 							>
 								<Checkbox
-									className={
+									css={
 										getClassName(this.props.innerClass, 'checkbox') || null
 									}
 									id={`${this.props.componentId}-${selectAllLabel}`}
@@ -480,7 +482,7 @@ class MultiDataList extends Component {
 									show={this.props.showCheckbox}
 								/>
 								<label
-									className={getClassName(this.props.innerClass, 'label') || null}
+									css={getClassName(this.props.innerClass, 'label') || null}
 									htmlFor={`${this.props.componentId}-${selectAllLabel}`}
 								>
 									{selectAllLabel}
@@ -493,7 +495,7 @@ class MultiDataList extends Component {
 								return (
 									<li
 										key={item.label}
-										className={`${
+										css={`${
 											isChecked ? 'active' : ''
 										}`}
 										role="option"
@@ -501,7 +503,7 @@ class MultiDataList extends Component {
 										aria-selected={isChecked}
 									>
 										<Checkbox
-											className={
+											css={
 												getClassName(this.props.innerClass, 'checkbox') || null
 											}
 											id={`${this.props.componentId}-${item.label}`}
@@ -512,7 +514,7 @@ class MultiDataList extends Component {
 											show={this.props.showCheckbox}
 										/>
 										<label
-											className={
+											css={
 												getClassName(this.props.innerClass, 'label') || null
 											}
 											htmlFor={`${this.props.componentId}-${item.label}`}
@@ -524,7 +526,7 @@ class MultiDataList extends Component {
 													<span>{item.label}</span>
 													{showCount && item.count && (
 														<span
-															className={
+															css={
 																getClassName(
 																	this.props.innerClass,
 																	'count',

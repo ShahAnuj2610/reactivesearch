@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React, { Component } from 'react';
 
 import {
@@ -343,7 +345,7 @@ class SingleList extends Component {
 		if (this.props.showSearch) {
 			return (
 				<Input
-					className={getClassName(this.props.innerClass, 'input') || null}
+					css={getClassName(this.props.innerClass, 'input') || null}
 					onChange={this.handleInputChange}
 					value={this.state.searchTerm}
 					placeholder={this.props.placeholder}
@@ -441,9 +443,9 @@ class SingleList extends Component {
 		const isAllChecked = this.state.currentValue === selectAllLabel;
 
 		return (
-			<Container style={this.props.style} className={this.props.className}>
+			<Container style={this.props.style} css={this.props.className}>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
@@ -452,19 +454,19 @@ class SingleList extends Component {
 					this.getComponent()
 				) : (
 					<UL
-						className={getClassName(this.props.innerClass, 'list') || null}
+						css={getClassName(this.props.innerClass, 'list') || null}
 						role="radiogroup"
 						aria-label={`${this.props.componentId}-items`}
 					>
 						{selectAllLabel ? (
 							<li
 								key={selectAllLabel}
-								className={`${isAllChecked ? 'active' : ''}`}
+								css={`${isAllChecked ? 'active' : ''}`}
 								role="radio"
 								aria-checked={isAllChecked}
 							>
 								<Radio
-									className={getClassName(this.props.innerClass, 'radio')}
+									css={getClassName(this.props.innerClass, 'radio')}
 									id={`${this.props.componentId}-${selectAllLabel}`}
 									value={selectAllLabel}
 									tabIndex={isAllChecked ? '-1' : '0'}
@@ -474,7 +476,7 @@ class SingleList extends Component {
 									show={this.props.showRadio}
 								/>
 								<label
-									className={getClassName(this.props.innerClass, 'label') || null}
+									css={getClassName(this.props.innerClass, 'label') || null}
 									htmlFor={`${this.props.componentId}-${selectAllLabel}`}
 								>
 									{selectAllLabel}
@@ -485,9 +487,9 @@ class SingleList extends Component {
 							? this.listItems.map((item) => {
 								const isChecked = this.state.currentValue === String(item.key);
 								return (
-									<li key={item.key} className={`${isChecked ? 'active' : ''}`} role="radio" aria-checked={isChecked}>
+									<li key={item.key} css={`${isChecked ? 'active' : ''}`} role="radio" aria-checked={isChecked}>
 										<Radio
-											className={getClassName(this.props.innerClass, 'radio')}
+											css={getClassName(this.props.innerClass, 'radio')}
 											id={`${this.props.componentId}-${item.key}`}
 											tabIndex={isChecked ? '-1' : '0'}
 											value={item.key}
@@ -497,7 +499,7 @@ class SingleList extends Component {
 											show={this.props.showRadio}
 										/>
 										<label
-											className={
+											css={
 												getClassName(this.props.innerClass, 'label') || null
 											}
 											htmlFor={`${this.props.componentId}-${item.key}`}
@@ -509,7 +511,7 @@ class SingleList extends Component {
 													<span>{item.key}</span>
 													{this.props.showCount && (
 														<span
-															className={
+															css={
 																getClassName(
 																	this.props.innerClass,
 																	'count',

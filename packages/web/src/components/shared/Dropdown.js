@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+import { Component } from 'react';
 import Downshift from 'downshift';
 import { withTheme } from 'emotion-theming';
 
@@ -145,10 +147,10 @@ class Dropdown extends Component {
 				render={({
 					getButtonProps, getItemProps, isOpen, highlightedIndex, ...rest
 				}) => (
-					<div className={suggestionsContainer}>
+					<div css={suggestionsContainer}>
 						<Select
 							{...getButtonProps()}
-							className={getClassName(this.props.innerClass, 'select') || null}
+							css={getClassName(this.props.innerClass, 'select') || null}
 							onClick={this.toggle}
 							title={selectedItem ? this.renderToString(selectedItem) : placeholder}
 							small={this.props.small}
@@ -169,7 +171,7 @@ class Dropdown extends Component {
 								getButtonProps, getItemProps, isOpen, highlightedIndex, ...rest,
 							}) : isOpen && itemsToRender.length ? (
 								<ul
-									className={`${suggestions(themePreset, theme)} ${
+									css={`${suggestions(themePreset, theme)} ${
 										this.props.small ? 'small' : ''
 									} ${getClassName(this.props.innerClass, 'list')}`}
 								>
@@ -181,7 +183,7 @@ class Dropdown extends Component {
 												borderBottom: '1px solid #ddd',
 											}}
 											showIcon={false}
-											className={getClassName(this.props.innerClass, 'input')}
+											css={getClassName(this.props.innerClass, 'input')}
 											placeholder={this.props.searchPlaceholder}
 											value={this.state.searchTerm}
 											onChange={this.handleInputChange}
@@ -204,7 +206,7 @@ class Dropdown extends Component {
 												<li
 													{...getItemProps({ item })}
 													key={item[keyField]}
-													className={`${selected ? 'active' : ''}`}
+													css={`${selected ? 'active' : ''}`}
 													style={{
 														backgroundColor: this.getBackgroundColor(
 															highlightedIndex === index,
@@ -232,7 +234,7 @@ class Dropdown extends Component {
 															{this.props.showCount
 																&& item.doc_count && (
 																<span
-																	className={
+																	css={
 																		getClassName(
 																			this.props.innerClass,
 																			'count',
@@ -246,7 +248,7 @@ class Dropdown extends Component {
 													)}
 													{selected && this.props.multi ? (
 														<Tick
-															className={
+															css={
 																getClassName(
 																	this.props.innerClass,
 																	'icon',
