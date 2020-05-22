@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React, { Component } from 'react';
 import Downshift from 'downshift';
 import { withTheme } from 'emotion-theming';
@@ -659,7 +661,7 @@ class DataSearch extends Component {
 						render={renderMic}
 						iconPosition={iconPosition}
 						onResult={this.handleVoiceResults}
-						className={getClassName(innerClass, 'mic') || null}
+						css={getClassName(innerClass, 'mic') || null}
 						applyClearStyle={!!currentValue && showClear}
 						showIcon={showIcon}
 					/>
@@ -808,9 +810,9 @@ class DataSearch extends Component {
 		const suggestionsList = this.parsedSuggestions;
 		const { theme, themePreset, size } = this.props;
 		return (
-			<Container style={this.props.style} className={this.props.className}>
+			<Container style={this.props.style} css={this.props.className}>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
@@ -828,7 +830,7 @@ class DataSearch extends Component {
 							highlightedIndex,
 							...rest
 						}) => (
-							<div className={suggestionsContainer}>
+							<div css={suggestionsContainer}>
 								<Input
 									aria-label={this.props.componentId}
 									id={`${this.props.componentId}-input`}
@@ -839,7 +841,7 @@ class DataSearch extends Component {
 										this._inputRef = c;
 									}}
 									{...getInputProps({
-										className: getClassName(this.props.innerClass, 'input'),
+										css: getClassName(this.props.innerClass, 'input'),
 										placeholder: this.props.placeholder,
 										value:
 											this.state.currentValue === null
@@ -867,7 +869,7 @@ class DataSearch extends Component {
 								{this.renderError()}
 								{!this.hasCustomRenderer && isOpen && suggestionsList.length ? (
 									<ul
-										className={`${suggestions(
+										css={`${suggestions(
 											themePreset,
 											theme,
 										)} ${getClassName(this.props.innerClass, 'list')}`}
@@ -898,10 +900,10 @@ class DataSearch extends Component {
 						{...this.props.downShiftProps}
 					/>
 				) : (
-					<div className={suggestionsContainer}>
+					<div css={suggestionsContainer}>
 						<Input
 							aria-label={this.props.componentId}
-							className={getClassName(this.props.innerClass, 'input') || null}
+							css={getClassName(this.props.innerClass, 'input') || null}
 							placeholder={this.props.placeholder}
 							value={this.state.currentValue ? this.state.currentValue : ''}
 							onChange={this.onInputChange}

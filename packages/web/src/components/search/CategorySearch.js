@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React, { Component } from 'react';
 import Downshift from 'downshift';
 import { withTheme } from 'emotion-theming';
@@ -59,7 +61,7 @@ import SuggestionWrapper from './addons/SuggestionWrapper';
 
 const Text = withTheme(props => (
 	<span
-		className="trim"
+		css="trim"
 		style={{
 			color: props.primary ? props.theme.colors.primaryColor : props.theme.colors.textColor,
 		}}
@@ -761,7 +763,7 @@ class CategorySearch extends Component {
 						render={renderMic}
 						iconPosition={iconPosition}
 						onResult={this.handleVoiceResults}
-						className={getClassName(innerClass, 'mic') || null}
+						css={getClassName(innerClass, 'mic') || null}
 						applyClearStyle={!!currentValue && showClear}
 						showIcon={showIcon}
 					/>
@@ -957,9 +959,9 @@ class CategorySearch extends Component {
 		const { theme, themePreset, size } = this.props;
 		const finalSuggestionsList = this.parsedSuggestions;
 		return (
-			<Container style={this.props.style} className={this.props.className}>
+			<Container style={this.props.style} css={this.props.className}>
 				{this.props.title && (
-					<Title className={getClassName(this.props.innerClass, 'title') || null}>
+					<Title css={getClassName(this.props.innerClass, 'title') || null}>
 						{this.props.title}
 					</Title>
 				)}
@@ -977,7 +979,7 @@ class CategorySearch extends Component {
 							highlightedIndex,
 							...rest
 						}) => (
-							<div className={suggestionsContainer}>
+							<div css={suggestionsContainer}>
 								<Input
 									innerRef={(c) => {
 										this._inputRef = c;
@@ -988,7 +990,7 @@ class CategorySearch extends Component {
 									showIcon={this.props.showIcon}
 									iconPosition={this.props.iconPosition}
 									{...getInputProps({
-										className: getClassName(this.props.innerClass, 'input'),
+										css: getClassName(this.props.innerClass, 'input'),
 										placeholder: this.props.placeholder,
 										value:
 											this.state.currentValue === null
@@ -1018,7 +1020,7 @@ class CategorySearch extends Component {
 									&& isOpen
 									&& finalSuggestionsList.length ? (
 										<ul
-											className={`${suggestions(
+											css={`${suggestions(
 												themePreset,
 												theme,
 											)} ${getClassName(this.props.innerClass, 'list')}`}
@@ -1051,13 +1053,13 @@ class CategorySearch extends Component {
 						{...this.props.downShiftProps}
 					/>
 				) : (
-					<div className={suggestionsContainer}>
+					<div css={suggestionsContainer}>
 						<Input
 							innerRef={(c) => {
 								this._inputRef = c;
 							}}
 							aria-label={this.props.componentId}
-							className={getClassName(this.props.innerClass, 'input')}
+							css={getClassName(this.props.innerClass, 'input')}
 							placeholder={this.props.placeholder}
 							value={this.state.currentValue ? this.state.currentValue : ''}
 							onChange={this.onInputChange}
